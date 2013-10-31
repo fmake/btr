@@ -1,0 +1,24 @@
+2013/10/31 17:04:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "pages".' in Z:\home\loc\yii-new\framework\web\CWebApplication.php:286
+Stack trace:
+#0 Z:\home\loc\yii-new\framework\web\CWebApplication.php(141): CWebApplication->runController('pages')
+#1 Z:\home\loc\yii-new\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 Z:\home\loc\yii-new\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=pages
+---
+2013/10/31 17:04:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "page".' in Z:\home\loc\yii-new\framework\web\CWebApplication.php:286
+Stack trace:
+#0 Z:\home\loc\yii-new\framework\web\CWebApplication.php(141): CWebApplication->runController('page')
+#1 Z:\home\loc\yii-new\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 Z:\home\loc\yii-new\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=page
+---
+2013/10/31 17:04:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "page/1".' in Z:\home\loc\yii-new\framework\web\CWebApplication.php:286
+Stack trace:
+#0 Z:\home\loc\yii-new\framework\web\CWebApplication.php(141): CWebApplication->runController('page/1')
+#1 Z:\home\loc\yii-new\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 Z:\home\loc\yii-new\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=page/1
+---
