@@ -1,0 +1,9 @@
+.*
+~*
+assets/*
+protected/config/*
+protected/runtime/*
+images/sitemoduls/*
+.idea/*
+!.gitignore
+!*.example
