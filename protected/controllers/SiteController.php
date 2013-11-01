@@ -98,6 +98,36 @@ class SiteController extends Controller
 		$this->render('login',array('model'=>$model));
 	}
 
+    /**
+     * Displays the login page
+     */
+    public function actionRegistration()
+    {
+        $user = new User();
+        $company = new Company();
+
+        if(isset($_POST['User']) and isset($_POST['Company']))
+        {
+            $company->attributes=$_POST['Company'];
+            $user->attributes=$_POST['User'];
+
+            $is_user = $user->save();
+            $is_company = $company->save();
+
+            //$is_user = $user->validate($user->attributes);
+            //$is_company = $company->validate($company->attributes);
+
+            if($is_user && $is_company){
+               // $user->save();
+               // $company->save();
+                $this->redirect(array('registration'));
+            }
+        }
+
+        // display the login form
+        $this->render('registration',array('user'=>$user,'company'=>$company));
+    }
+
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */

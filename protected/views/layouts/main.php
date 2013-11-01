@@ -1,59 +1,90 @@
 <?php /* @var $this Controller */ ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<!--[if IE 7 ]>   <html class="no-js ie7" lang="ru"><![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="ru"> <![endif]-->
+<!--[if gt IE 8]> <!--> <html class="no-js" lang="ru"> <!--<![endif]-->
+
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="language" content="en" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
-	<!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
-	<!--[if lt IE 8]>
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
-	<![endif]-->
+    <!--style-->
+    <link rel="stylesheet" href="/css/btr/base.css">
+    <link rel="stylesheet" href="/css/btr/normalize.css">
+    <link rel="stylesheet" href="/css/btr/foundation.css">
+    <link rel="stylesheet" href="/css/btr/main.css">
 
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+    <!--script-->
+    <script src="/js/vendor/custom.modernizr.js"></script>
+    <script src="/js/vendor/jquery.js"></script>
 
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
-
 <body>
+<div id="header">
+    <!--.top-header-->
+    <div class="top-header">
+        <div class="row">
+            <div class="large-12">
+                <div class="group-link">
+                    <a href="javascript:void(0)">Как работает этот сайт ? </a>
+                    <a href="javascript:void(0)">Войти в систему</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.top-header-->
+    <!--.bottom-header-->
+    <div class="bottom-header">
+        <div class="row">
+            <div class="large-5 columns">
+                <a href="javascript:void(0)" class="logo">btr</a>
+            </div>
+            <div class="large-7 columns">
+                <nav class="top-bar">
+                    <style>
+                        .title-area li {
+                            float: left;
+                        }
+                    </style>
+                    <?php $this->widget('zii.widgets.CMenu',array(
+                        'items'=>array(
+                            array('label'=>'Главная', 'url'=>array('/site/index')),
+                            array('label'=>'О компании', 'url'=>array('/site/page', 'view'=>'about')),
+                            array('label'=>'Контакты', 'url'=>array('/site/contact')),
+                            array('label'=>'Вход', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+                            array('label'=>'Регистрация', 'url'=>array('/site/registration'), 'visible'=>Yii::app()->user->isGuest),
+                            array('label'=>'Выйти ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+                        ),
+                        'htmlOptions'=>array('class'=>'title-area'),
+                    )); ?>
 
-<div class="container" id="page">
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!--/.bottom-header-->
 
-	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
+    <div id="main">
 
-	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-			),
-		)); ?>
-	</div><!-- mainmenu -->
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
+        <?php echo $content; ?>
 
-	<?php echo $content; ?>
+    </div>
 
-	<div class="clear"></div>
 
-	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
-	</div><!-- footer -->
+    <script>
+        document.write('<script src=' +
+            ('__proto__' in {} ? '/js/vendor/zepto' : 'js/vendor/jquery') +
+            '.js><\/script>')
+    </script>
 
-</div><!-- page -->
+    <script src="/js/foundation.min.js"></script>
 
+    <script>
+        $(document).foundation();
+    </script>
 </body>
 </html>
