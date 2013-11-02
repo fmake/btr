@@ -3,9 +3,9 @@
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - Login';
+$this->pageTitle=Yii::app()->name . ' - Регистрация';
 $this->breadcrumbs=array(
-    'Login',
+    'Регистрация',
 );
 ?>
 
@@ -108,10 +108,13 @@ $this->breadcrumbs=array(
                 </div>
             <?php endif; ?>
 
-
-            <div class="row buttons">
-                <?php echo CHtml::submitButton($user->isNewRecord ? 'Create' : 'Save'); ?>
+            <!--.row-->
+            <div class="row">
+                <div class="large-12 columns">
+                    <button class="right">Отправить</button>
+                </div>
             </div>
+            <!--/.row-->
 
             <?php $this->endWidget(); ?>
         <?php endif; ?>
