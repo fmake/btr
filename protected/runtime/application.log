@@ -212,3 +212,45 @@ Stack trace:
 REQUEST_URI=/index.php/site/registration
 in Z:\home\loc\btr\protected\controllers\SiteController.php (125)
 in Z:\home\loc\btr\index.php (13)
+2013/11/02 15:30:56 [error] [exception.CException] exception 'CException' with message 'Не определено свойство "User.verifyCode".' in Z:\home\loc\btr\framework\base\CComponent.php:130
+Stack trace:
+#0 Z:\home\loc\btr\framework\db\ar\CActiveRecord.php(145): CComponent->__get('verifyCode')
+#1 Z:\home\loc\btr\framework\web\helpers\CHtml.php(2529): CActiveRecord->__get('verifyCode')
+#2 Z:\home\loc\btr\framework\web\helpers\CHtml.php(2252): CHtml::resolveValue(Object(User), 'verifyCode')
+#3 Z:\home\loc\btr\framework\web\helpers\CHtml.php(1434): CHtml::activeInputField('text', Object(User), 'verifyCode', Array)
+#4 Z:\home\loc\btr\framework\web\widgets\CActiveForm.php(725): CHtml::activeTextField(Object(User), 'verifyCode', Array)
+#5 Z:\home\loc\btr\protected\views\site\registration.php(105): CActiveForm->textField(Object(User), 'verifyCode')
+#6 Z:\home\loc\btr\framework\web\CBaseController.php(126): require('Z:\home\loc\btr...')
+#7 Z:\home\loc\btr\framework\web\CBaseController.php(95): CBaseController->renderInternal('Z:\home\loc\btr...', Array, true)
+#8 Z:\home\loc\btr\framework\web\CController.php(869): CBaseController->renderFile('Z:\home\loc\btr...', Array, true)
+#9 Z:\home\loc\btr\framework\web\CController.php(782): CController->renderPartial('registration', Array, true)
+#10 Z:\home\loc\btr\protected\controllers\SiteController.php(143): CController->render('registration', Array)
+#11 Z:\home\loc\btr\framework\web\actions\CInlineAction.php(49): SiteController->actionRegistration()
+#12 Z:\home\loc\btr\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 Z:\home\loc\btr\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#14 Z:\home\loc\btr\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 Z:\home\loc\btr\framework\web\CWebApplication.php(282): CController->run('registration')
+#16 Z:\home\loc\btr\framework\web\CWebApplication.php(141): CWebApplication->runController('site/registrati...')
+#17 Z:\home\loc\btr\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#18 Z:\home\loc\btr\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/index.php/site/registration
+HTTP_REFERER=http://btr.loc/index.php/site/login
+---
+2013/11/02 16:05:40 [error] [php] session_regenerate_id() [<a href='function.session-regenerate-id'>function.session-regenerate-id</a>]: Cannot regenerate session id - headers already sent (Z:\home\loc\btr\framework\web\CHttpSession.php:181)
+Stack trace:
+#0 Z:\home\loc\btr\framework\web\auth\CWebUser.php(233): CWebUser->changeIdentity()
+#1 Z:\home\loc\btr\protected\models\LoginForm.php(71): CWebUser->login()
+#2 Z:\home\loc\btr\protected\controllers\SiteController.php(94): LoginForm->login()
+#3 Z:\home\loc\btr\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#4 Z:\home\loc\btr\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 Z:\home\loc\btr\framework\web\CController.php(286): SiteController->runAction()
+#6 Z:\home\loc\btr\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 Z:\home\loc\btr\framework\web\CWebApplication.php(282): SiteController->run()
+#8 Z:\home\loc\btr\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 Z:\home\loc\btr\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 Z:\home\loc\btr\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/site/login
+in Z:\home\loc\btr\protected\models\LoginForm.php (71)
+in Z:\home\loc\btr\protected\controllers\SiteController.php (94)
+in Z:\home\loc\btr\index.php (13)

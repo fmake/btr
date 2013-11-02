@@ -97,7 +97,16 @@ $this->breadcrumbs=array(
                 </div>
             </div>
             <!--/.row-->
-
+            <?php if(CCaptcha::checkRequirements()): ?>
+                <div class="row">
+                    <?php echo $form->labelEx($user,'verifyCode'); ?>
+                    <div style="display: inline-flex;">
+                        <?php $this->widget('CCaptcha'); ?>
+                        <?php echo $form->textField($user,'verifyCode'); ?>
+                    </div>
+                    <?php /*echo $form->error($user,'verifyCode');*/ ?>
+                </div>
+            <?php endif; ?>
 
 
             <div class="row buttons">

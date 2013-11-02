@@ -17,6 +17,8 @@
  */
 class User extends CActiveRecord
 {
+
+    public $verifyCode;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -37,6 +39,8 @@ class User extends CActiveRecord
 			//array('date, date_create, id_company, balance', 'numerical', 'integerOnly'=>true),
 			array('login', 'length', 'max'=>255),
             array('login', 'email'),
+            array('login', 'unique'),
+            array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 			//array('active', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -71,6 +75,7 @@ class User extends CActiveRecord
 			'id_company' => 'Компания',
 			'balance' => 'Баланс',
 			'active' => 'Активация',
+            'verifyCode'=>'Verification Code',
 		);
 	}
 
