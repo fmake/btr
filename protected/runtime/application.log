@@ -198,3 +198,17 @@ REQUEST_URI=/index.php/site/registration
 in Z:\home\loc\btr\protected\models\Company.php (76)
 in Z:\home\loc\btr\protected\controllers\SiteController.php (114)
 in Z:\home\loc\btr\index.php (13)
+2013/11/02 13:03:31 [error] [php] Cannot modify header information - headers already sent by (output started at Z:\home\loc\btr\protected\controllers\SiteController.php:122) (Z:\home\loc\btr\framework\web\CHttpRequest.php:803)
+Stack trace:
+#0 Z:\home\loc\btr\protected\controllers\SiteController.php(125): SiteController->redirect()
+#1 Z:\home\loc\btr\framework\web\actions\CInlineAction.php(49): SiteController->actionRegistration()
+#2 Z:\home\loc\btr\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 Z:\home\loc\btr\framework\web\CController.php(286): SiteController->runAction()
+#4 Z:\home\loc\btr\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#5 Z:\home\loc\btr\framework\web\CWebApplication.php(282): SiteController->run()
+#6 Z:\home\loc\btr\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 Z:\home\loc\btr\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 Z:\home\loc\btr\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/site/registration
+in Z:\home\loc\btr\protected\controllers\SiteController.php (125)
+in Z:\home\loc\btr\index.php (13)

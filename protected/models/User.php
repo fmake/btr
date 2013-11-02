@@ -74,12 +74,6 @@ class User extends CActiveRecord
 		);
 	}
 
-    public function beforeSave(){
-        $this->password = md5($this->password);
-        $this->date_create = time();
-        return true;
-    }
-
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *

@@ -111,16 +111,31 @@ class SiteController extends Controller
             $company->attributes=$_POST['Company'];
             $user->attributes=$_POST['User'];
 
-            $is_user = $user->save();
-            $is_company = $company->save();
+            $is_user = $user->validate();
+            $is_company = $company->validate();
 
             //$is_user = $user->validate($user->attributes);
             //$is_company = $company->validate($company->attributes);
 
             if($is_user && $is_company){
-               // $user->save();
-               // $company->save();
-                $this->redirect(array('registration'));
+                $date_create = time();
+                $company->date_create = $date_create;
+                $company->save();
+
+                $user->id_company = $company->id_company;
+                $user->password = md5($user->password);
+                $user->date_create = $date_create;
+
+                $user->save();
+
+                Yii::app()->user->setFlash('register_user','Спасибо за регистрацию на сайте. Теперь вы можете авторизироваться.');
+                $this->refresh();
+                //print_r($user);
+
+                //echo 'Ok';
+                //$this->redirect(array('registration'));
+            } else {
+                //echo 'No';
             }
         }
 

@@ -71,10 +71,7 @@ class Company extends CActiveRecord
 		);
 	}
 
-    public function beforeSave(){
-        $this->date_create = time();
-        return true;
-    }
+
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
