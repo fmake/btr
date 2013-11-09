@@ -52,7 +52,8 @@
                     <section class="top-bar-section">
                         <?php $this->widget('zii.widgets.CMenu',array(
                             'items'=>array(
-                                array('label'=>'Главная', 'url'=>array('/site/index'),'class'=>'name'),
+                                array('label'=>'Главная', 'url'=>array('/site/index')),
+                                array('label'=>'Рейтинг компаний', 'url'=>array('/site/rating')),
                                 array('label'=>'О компании', 'url'=>array('/site/page', 'view'=>'about')),
                                 array('label'=>'Контакты', 'url'=>array('/site/contact')),
                                 array('label'=>'Вход', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),

@@ -48,6 +48,17 @@ class SiteController extends Controller
 		$this->render('index',array('order'=>$order));
 	}
 
+    public function actionRating()
+    {
+        $company = new Company();
+
+        $items = Company::model()->findAll('active = :active',array(':active'=>1));
+
+        print_r($items);
+
+        $this->render('rating');
+    }
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */
