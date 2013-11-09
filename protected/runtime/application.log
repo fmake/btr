@@ -254,3 +254,151 @@ REQUEST_URI=/index.php/site/login
 in Z:\home\loc\btr\protected\models\LoginForm.php (71)
 in Z:\home\loc\btr\protected\controllers\SiteController.php (94)
 in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:43:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "user".' in Z:\home\loc\btr\framework\web\CController.php:483
+Stack trace:
+#0 Z:\home\loc\btr\framework\web\CController.php(270): CController->missingAction('user')
+#1 Z:\home\loc\btr\framework\web\CWebApplication.php(282): CController->run('user')
+#2 Z:\home\loc\btr\framework\web\CWebApplication.php(141): CWebApplication->runController('site/user')
+#3 Z:\home\loc\btr\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 Z:\home\loc\btr\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/user
+---
+2013/11/09 14:44:08 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in Z:\home\loc\btr\framework\web\CController.php:336
+Stack trace:
+#0 Z:\home\loc\btr\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 Z:\home\loc\btr\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 Z:\home\loc\btr\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 Z:\home\loc\btr\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 Z:\home\loc\btr\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 Z:\home\loc\btr\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 Z:\home\loc\btr\framework\web\CController.php(291): CFilterChain->run()
+#7 Z:\home\loc\btr\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 Z:\home\loc\btr\framework\web\CWebApplication.php(282): CController->run('view')
+#9 Z:\home\loc\btr\framework\web\CWebApplication.php(141): CWebApplication->runController('user/view')
+#10 Z:\home\loc\btr\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 Z:\home\loc\btr\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/index.php/user/view
+---
+2013/11/09 14:51:52 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'У вас недостаточно прав для выполнения указанного действия.' in Z:\home\loc\btr\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 Z:\home\loc\btr\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), '?? ?????? ?????...')
+#1 Z:\home\loc\btr\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 Z:\home\loc\btr\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 Z:\home\loc\btr\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 Z:\home\loc\btr\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 Z:\home\loc\btr\framework\web\CController.php(291): CFilterChain->run()
+#6 Z:\home\loc\btr\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 Z:\home\loc\btr\framework\web\CWebApplication.php(282): CController->run('create')
+#8 Z:\home\loc\btr\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create')
+#9 Z:\home\loc\btr\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 Z:\home\loc\btr\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php/user/create
+HTTP_REFERER=http://btr.loc/index.php/user/index
+---
+2013/11/09 14:52:32 [warning] [application] Не удалось присвоить небезопасный атрибут "name" класса "User".
+in Z:\home\loc\btr\protected\controllers\UserController.php (72)
+in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:52:32 [warning] [application] Не удалось присвоить небезопасный атрибут "comment" класса "User".
+in Z:\home\loc\btr\protected\controllers\UserController.php (72)
+in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:52:32 [warning] [application] Не удалось присвоить небезопасный атрибут "date" класса "User".
+in Z:\home\loc\btr\protected\controllers\UserController.php (72)
+in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:52:32 [warning] [application] Не удалось присвоить небезопасный атрибут "date_create" класса "User".
+in Z:\home\loc\btr\protected\controllers\UserController.php (72)
+in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:52:32 [warning] [application] Не удалось присвоить небезопасный атрибут "id_company" класса "User".
+in Z:\home\loc\btr\protected\controllers\UserController.php (72)
+in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:52:32 [warning] [application] Не удалось присвоить небезопасный атрибут "balance" класса "User".
+in Z:\home\loc\btr\protected\controllers\UserController.php (72)
+in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:52:32 [warning] [application] Не удалось присвоить небезопасный атрибут "active" класса "User".
+in Z:\home\loc\btr\protected\controllers\UserController.php (72)
+in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:52:32 [error] [exception.CException] exception 'CException' with message 'Действие CCaptchaValidator.action "captcha" задано неверно: действия не найдено в текущем контроллере.' in Z:\home\loc\btr\framework\validators\CCaptchaValidator.php:77
+Stack trace:
+#0 Z:\home\loc\btr\framework\validators\CCaptchaValidator.php(49): CCaptchaValidator->getCaptchaAction()
+#1 Z:\home\loc\btr\framework\validators\CValidator.php(213): CCaptchaValidator->validateAttribute(Object(User), 'verifyCode')
+#2 Z:\home\loc\btr\framework\base\CModel.php(159): CValidator->validate(Object(User), NULL)
+#3 Z:\home\loc\btr\framework\db\ar\CActiveRecord.php(805): CModel->validate(NULL)
+#4 Z:\home\loc\btr\protected\controllers\UserController.php(73): CActiveRecord->save()
+#5 Z:\home\loc\btr\framework\web\actions\CInlineAction.php(49): UserController->actionCreate()
+#6 Z:\home\loc\btr\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 Z:\home\loc\btr\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 Z:\home\loc\btr\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 Z:\home\loc\btr\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 Z:\home\loc\btr\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 Z:\home\loc\btr\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 Z:\home\loc\btr\framework\web\CController.php(291): CFilterChain->run()
+#13 Z:\home\loc\btr\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 Z:\home\loc\btr\framework\web\CWebApplication.php(282): CController->run('create')
+#15 Z:\home\loc\btr\framework\web\CWebApplication.php(141): CWebApplication->runController('user/create')
+#16 Z:\home\loc\btr\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#17 Z:\home\loc\btr\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/index.php/user/create
+HTTP_REFERER=http://btr.loc/index.php/user/create
+---
+2013/11/09 14:53:58 [warning] [application] Не удалось присвоить небезопасный атрибут "id_user" класса "User".
+in Z:\home\loc\btr\protected\controllers\UserController.php (139)
+in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:53:58 [warning] [application] Не удалось присвоить небезопасный атрибут "name" класса "User".
+in Z:\home\loc\btr\protected\controllers\UserController.php (139)
+in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:53:58 [warning] [application] Не удалось присвоить небезопасный атрибут "comment" класса "User".
+in Z:\home\loc\btr\protected\controllers\UserController.php (139)
+in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:53:58 [warning] [application] Не удалось присвоить небезопасный атрибут "date" класса "User".
+in Z:\home\loc\btr\protected\controllers\UserController.php (139)
+in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:53:58 [warning] [application] Не удалось присвоить небезопасный атрибут "date_create" класса "User".
+in Z:\home\loc\btr\protected\controllers\UserController.php (139)
+in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:53:58 [warning] [application] Не удалось присвоить небезопасный атрибут "id_company" класса "User".
+in Z:\home\loc\btr\protected\controllers\UserController.php (139)
+in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:53:58 [warning] [application] Не удалось присвоить небезопасный атрибут "balance" класса "User".
+in Z:\home\loc\btr\protected\controllers\UserController.php (139)
+in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:53:58 [warning] [application] Не удалось присвоить небезопасный атрибут "active" класса "User".
+in Z:\home\loc\btr\protected\controllers\UserController.php (139)
+in Z:\home\loc\btr\index.php (13)
+2013/11/09 14:54:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "admin".' in Z:\home\loc\btr\framework\web\CController.php:483
+Stack trace:
+#0 Z:\home\loc\btr\framework\web\CController.php(270): CController->missingAction('admin')
+#1 Z:\home\loc\btr\framework\web\CWebApplication.php(282): CController->run('admin')
+#2 Z:\home\loc\btr\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin')
+#3 Z:\home\loc\btr\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 Z:\home\loc\btr\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/admin
+---
+2013/11/09 14:54:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "order/admin".' in Z:\home\loc\btr\framework\web\CWebApplication.php:286
+Stack trace:
+#0 Z:\home\loc\btr\framework\web\CWebApplication.php(141): CWebApplication->runController('order/admin')
+#1 Z:\home\loc\btr\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 Z:\home\loc\btr\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/order/admin
+---
+2013/11/09 14:59:43 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Некорректный запрос.' in Z:\home\loc\btr\framework\web\CController.php:336
+Stack trace:
+#0 Z:\home\loc\btr\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 Z:\home\loc\btr\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 Z:\home\loc\btr\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 Z:\home\loc\btr\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 Z:\home\loc\btr\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 Z:\home\loc\btr\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 Z:\home\loc\btr\framework\web\CController.php(291): CFilterChain->run()
+#7 Z:\home\loc\btr\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 Z:\home\loc\btr\framework\web\CWebApplication.php(282): CController->run('view')
+#9 Z:\home\loc\btr\framework\web\CWebApplication.php(141): CWebApplication->runController('user/view')
+#10 Z:\home\loc\btr\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 Z:\home\loc\btr\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/index.php/user/view/
+---

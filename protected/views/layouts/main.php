@@ -45,23 +45,23 @@
             </div>
             <div class="large-7 columns">
                 <nav class="top-bar">
-                    <style>
-                        .title-area li {
-                            float: left;
-                        }
-                    </style>
-                    <?php $this->widget('zii.widgets.CMenu',array(
-                        'items'=>array(
-                            array('label'=>'Главная', 'url'=>array('/site/index')),
-                            array('label'=>'О компании', 'url'=>array('/site/page', 'view'=>'about')),
-                            array('label'=>'Контакты', 'url'=>array('/site/contact')),
-                            array('label'=>'Вход', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-                            array('label'=>'Регистрация', 'url'=>array('/site/registration'), 'visible'=>Yii::app()->user->isGuest),
-                            array('label'=>'Выйти ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-                        ),
-                        'htmlOptions'=>array('class'=>'title-area'),
-                    )); ?>
-
+                    <ul class="title-area">
+                        <li class="name"></li>
+                        <li class="toggle-topbar"><a href="javascript:void(0)">Меню</a></li>
+                    </ul>
+                    <section class="top-bar-section">
+                        <?php $this->widget('zii.widgets.CMenu',array(
+                            'items'=>array(
+                                array('label'=>'Главная', 'url'=>array('/site/index'),'class'=>'name'),
+                                array('label'=>'О компании', 'url'=>array('/site/page', 'view'=>'about')),
+                                array('label'=>'Контакты', 'url'=>array('/site/contact')),
+                                array('label'=>'Вход', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+                                array('label'=>'Регистрация', 'url'=>array('/site/registration'), 'visible'=>Yii::app()->user->isGuest),
+                                array('label'=>'Выйти ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+                            ),
+                            'htmlOptions'=>array('class'=>'title-area'),
+                        )); ?>
+                    </section>
                 </nav>
             </div>
         </div>

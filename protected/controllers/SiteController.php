@@ -29,7 +29,23 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+
+        $order = new Order();
+        if(isset($_POST['Order'])){
+            $order->attributes=$_POST['Order'];
+            if($order->validate())
+            {
+                $date_create = time();
+                $order->date_create = $date_create;
+                $order->url_referer = $_SERVER['HTTP_REFERER'];
+                $order->save();
+
+                Yii::app()->user->setFlash('order_complete','Спасибо за заказ. С Вами свяжутся в ближайшее время.');
+                $this->refresh();
+            }
+        }
+
+		$this->render('index',array('order'=>$order));
 	}
 
 	/**
