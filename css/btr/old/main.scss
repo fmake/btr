@@ -3,6 +3,9 @@
  * Created by: Future-group.ru
  * Developer: Alexey Sapigora (alexeysapigora@gmail.com)
  */
+
+$white: #ffffff;
+$black: #000000;
  /* ----------------------------------------------------------------------------------------------------------
 01 typography -----------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------- */
@@ -12,36 +15,26 @@ h1 {
   margin-bottom: 20px;
   text-transform: uppercase;
 }
-
 h2 {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 20px;
 }
-
 h3 {
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 15px;
 }
-
 p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 19px;
-  font-weight: normal;
+  font-weight: 400;
   margin-bottom: 40px;
-  color: #666666;
 }
-
 b,
-strong {
-  font-weight: 700;
-}
-
+strong { font-weight: 700; }
 i,
-em {
-  font-style: italic;
-}
+em { font-style: italic; }
 
 /* ----------------------------------------------------------------------------------------------------------
 02 links ----------------------------------------------------------------------------------------------------
@@ -49,13 +42,12 @@ em {
 a {
   text-decoration: underline;
   background: transparent;
-}
-a:active, a:hover {
-  text-decoration: none;
-  outline: 0;
-}
-a:focus {
-  outline: 0;
+  &:active,
+  &:hover {
+    text-decoration: none;
+    outline: 0;
+  }
+  &:focus { outline: 0; }
 }
 
 /* clearfix.css */
@@ -64,22 +56,15 @@ a:focus {
   display: block;
   height: 0;
   clear: both;
-  visibility: hidden;
+  visibility: hidden
 }
-
-* html .parent {
-  height: 1%;
-}
-
-*:first-child + html .parent {
-  min-height: 1px;
-}
+* html .parent { height: 1%; }
+*:first-child+html .parent { min-height: 1px; }
 
 ::-moz-selection {
   background: #b3d4fc;
   text-shadow: none;
 }
-
 ::selection {
   background: #b3d4fc;
   text-shadow: none;
@@ -88,108 +73,49 @@ a:focus {
 html {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%
 }
-
 body {
   width: 100%;
   height: 100%;
   min-height: 100%;
   line-height: 1;
-  background: white;
+  background: $white;
   position: relative;
   margin: 0;
-  padding: 0;
+  padding: 0
 }
-
 .wrapper {
   margin: 0 auto;
   width: 984px;
   position: relative;
 }
 
+#header {
+  
+}
 .top-header {
   background-color: #e9e9e9;
   height: 39px;
   border-bottom: 1px solid #c6c6c6;
 }
-
 .group-link {
   padding-top: 19px;
   font-size: 0;
+   a {
+    font-size: 11px;
+    color: #666666;
+    text-decoration: none;
+    border-bottom: 1px dotted #666666;
+    margin-left: 21px;
+    &:hover { border-bottom: none; }
+    &:first-child { margin-left: 0; }
+   }
 }
-.group-link a {
-  font-size: 11px;
-  color: #666666;
-  text-decoration: none;
-  border-bottom: 1px dotted #666666;
-  margin-left: 21px;
-}
-.group-link a:hover {
-  border-bottom: none;
-}
-.group-link a:first-child {
-  margin-left: 0;
-}
-
 a.logo {
   font-size: 24px;
-  color: black;
+  color: $black;
   text-transform: uppercase;
   text-decoration: none;
   vertical-align: middle;
-}
-
-.bottom-header {
-  margin-top: 20px;
-  line-height: 45px;
-}
-
-.top-bar {
-  background-color: #ebebeb;
-}
-
-.title-area .toggle-topbar, .title-area .toggle-topbar a {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px;
-  color: black;
-  font-weight: bold;
-}
-.title-area .toggle-topbar a {
-  text-decoration: none;
-}
-
-.top-bar-section .title-area li, .top-bar-section .title-area li a {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  color: black;
-  font-weight: normal;
-  margin: 0;
-}
-.top-bar-section .title-area li a {
-  text-decoration: none;
-  background-color: #ebebeb;
-}
-.top-bar-section .title-area li a:hover,.top-bar-section .title-area li.active a {
-  color: #666666;
-  background-color: #ebebeb;
-}
-
-.box-shadow {
-  -webkit-box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.25);
-  box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.25);
-}
-
-.bg-nav {
-  background-color: #e8e8e8;
-}
-
-.datatime {
-  color: #666666;
-  font-size: 11px;
-}
-
-.item {
-  padding: 20px 20px 20px 20px;
 }
