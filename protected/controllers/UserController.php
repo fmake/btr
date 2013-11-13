@@ -28,8 +28,8 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('admin'),
+				'actions'=>array('index','view','orders','ordersbuy'),
+				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
@@ -49,9 +49,13 @@ class UserController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($id)
+	public function actionView()
 	{
-		$this->render('view',array(
+        $login = Yii::app()->user->name;
+        $user = User::model()->find(array('select'=>'id_user','condition'=>'login=:login','params'=>array(':login'=>$login)));
+		//print_r($user);
+		$id = $user->id_user;
+        $this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
 	}
@@ -127,6 +131,22 @@ class UserController extends Controller
 			'dataProvider'=>$dataProvider,
 		));
 	}
+
+    /**
+     * Lists all models.
+     */
+    public function actionOrders()
+    {
+        $this->render('orders');
+    }
+
+    /**
+     * Lists all models.
+     */
+    public function actionOrdersbuy()
+    {
+        $this->render('ordersbuy');
+    }
 
 	/**
 	 * Manages all models.

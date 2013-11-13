@@ -2,19 +2,36 @@
 /* @var $this UserController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->breadcrumbs=array(
-	'Users',
-);
-
-$this->menu=array(
-	array('label'=>'Create User', 'url'=>array('create')),
-	array('label'=>'Manage User', 'url'=>array('admin')),
-);
 ?>
 
-<h1>Users</h1>
+<!--.row-->
+<div class="row">
+    <div class="large-12">
+        <h1>Кабинет</h1>
+    </div>
+</div>
+<!--/.row-->
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
+<!--.row-->
+<div class="row">
+    <div class="large-3 columns box-shadow bg-nav">
+        <ul>
+            <li><a href="#">Редактировать заказ</a></li>
+            <li><a href="#">Сортировка заказов</a></li>
+            <li><a href="#">Управление системой</a></li>
+            <li><a href="#">Удаление пользователей</a></li>
+            <li><a href="#">Добавление заказа</a></li>
+            <li><a href="#">Посмотреть все заказы</a></li>
+            <li><a href="#">Информация о заказе</a></li>
+            <li><a href="#">Удаление пользователей</a></li>
+            <li><a href="#">Сортировка заказов</a></li>
+            <li><a href="#">Посмотреть все заказы</a></li>
+            <li><a href="#">Информация о заказе</a></li>
+        </ul>
+    </div>
+
+    <div class="large-8 columns">
+        <p>Кабинет пользователя. Текст.</p>
+    </div>
+</div>
+<!--/.row-->
