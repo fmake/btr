@@ -746,3 +746,55 @@ Stack trace:
 #11 {main}
 REQUEST_URI=/index.php/user/ordersbuy
 ---
+2013/11/17 21:51:29 [warning] [application] Не удалось присвоить небезопасный атрибут "description" класса "Order".
+in Z:\home\loc\btr\protected\controllers\SiteController.php (35)
+in Z:\home\loc\btr\index.php (13)
+2013/11/17 22:17:25 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchAll(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause'. Выполнявшийся SQL-запрос: SELECT *
+FROM `company`
+WHERE id=:id.
+in Z:\home\loc\btr\protected\controllers\SiteController.php (57)
+in Z:\home\loc\btr\index.php (13)
+2013/11/17 22:17:25 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause'. The SQL statement executed was: SELECT *
+FROM `company`
+WHERE id=:id' in Z:\home\loc\btr\framework\db\CDbCommand.php:543
+Stack trace:
+#0 Z:\home\loc\btr\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 Z:\home\loc\btr\protected\controllers\SiteController.php(57): CDbCommand->queryAll()
+#2 Z:\home\loc\btr\framework\web\actions\CInlineAction.php(49): SiteController->actionRating()
+#3 Z:\home\loc\btr\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 Z:\home\loc\btr\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 Z:\home\loc\btr\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 Z:\home\loc\btr\framework\web\CWebApplication.php(282): CController->run('rating')
+#7 Z:\home\loc\btr\framework\web\CWebApplication.php(141): CWebApplication->runController('site/rating')
+#8 Z:\home\loc\btr\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 Z:\home\loc\btr\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php/site/rating
+HTTP_REFERER=http://btr.loc/index.php/site/page?view=about
+---
+2013/11/17 22:56:10 [warning] [application] Не удалось присвоить небезопасный атрибут "description" класса "Order".
+in Z:\home\loc\btr\protected\controllers\SiteController.php (35)
+in Z:\home\loc\btr\index.php (13)
+2013/11/17 23:05:43 [error] [exception.CException] exception 'CException' with message 'В классе CDbCommand и его поведениях не найден метод или замыкание с именем "queryCount".' in Z:\home\loc\btr\framework\base\CComponent.php:266
+Stack trace:
+#0 Z:\home\loc\btr\protected\controllers\UserController.php(157): CComponent->__call('queryCount', Array)
+#1 Z:\home\loc\btr\protected\controllers\UserController.php(157): CDbCommand->queryCount()
+#2 Z:\home\loc\btr\framework\web\actions\CInlineAction.php(49): UserController->actionOrders()
+#3 Z:\home\loc\btr\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 Z:\home\loc\btr\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 Z:\home\loc\btr\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 Z:\home\loc\btr\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 Z:\home\loc\btr\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 Z:\home\loc\btr\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 Z:\home\loc\btr\framework\web\CController.php(291): CFilterChain->run()
+#10 Z:\home\loc\btr\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 Z:\home\loc\btr\framework\web\CWebApplication.php(282): CController->run('orders')
+#12 Z:\home\loc\btr\framework\web\CWebApplication.php(141): CWebApplication->runController('user/orders')
+#13 Z:\home\loc\btr\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 Z:\home\loc\btr\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php/user/orders
+---
+2013/11/17 23:24:52 [warning] [application] Не удалось присвоить небезопасный атрибут "description" класса "Order".
+in Z:\home\loc\btr\protected\controllers\SiteController.php (35)
+in Z:\home\loc\btr\index.php (13)

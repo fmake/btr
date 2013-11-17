@@ -52,11 +52,13 @@ class SiteController extends Controller
     {
         $company = new Company();
 
-        $items = Company::model()->findAll('active = :active',array(':active'=>1));
+        //$items = Company::model()->findAll('active = :active',array(':active'=>1));
+        $q = Yii::app()->db->createCommand();
+        $items = $q->select()->from($company->tableName())->order(array('rating desc','id_company asc'))->limit(10)->queryAll();
 
-        print_r($items);
+        //print_r($items);
 
-        $this->render('rating');
+        $this->render('rating',array('items'=>$items));
     }
 
 	/**

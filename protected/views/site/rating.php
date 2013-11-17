@@ -12,7 +12,14 @@ $this->pageTitle="Рейтинг";
 <div class="row">
     <div class="large-5">
         <ol>
-            <li>Future</li>
+            <?
+                if($items)foreach($items as $key=>$item){
+            ?>
+                    <li><?echo $item['name']?></li>
+            <?
+                }
+            ?>
+            <!--<li>Future</li>
             <li>Agima</li>
             <li>Notemedia</li>
             <li>Шарашкина контора</li>
@@ -22,7 +29,7 @@ $this->pageTitle="Рейтинг";
             <li>Future</li>
             <li>Future</li>
             <li>Future</li>
-            <li>Future</li>
+            <li>Future</li>-->
         </ol>
     </div>
 </div>

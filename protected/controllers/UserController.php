@@ -49,15 +49,25 @@ class UserController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView()
+	public function actionView($id = false)
 	{
+
         $login = Yii::app()->user->name;
-        $user = User::model()->find(array('select'=>'id_user','condition'=>'login=:login','params'=>array(':login'=>$login)));
-		//print_r($user);
-		$id = $user->id_user;
-        $this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+        if(!$id){
+            $user = User::model()->find(array('select'=>'id_user','condition'=>'login=:login','params'=>array(':login'=>$login)));
+            //print_r($user);
+            $id = $user->id_user;
+            $this->render('view',array(
+                'model'=>$this->loadModel($id),
+            ));
+        } elseif($login == 'admin') {
+            $this->render('view',array(
+                'model'=>$this->loadModel($id),
+            ));
+        } else {
+            $this->redirect('/index.php/user/view/');
+        }
+
 	}
 
 	/**
@@ -137,7 +147,18 @@ class UserController extends Controller
      */
     public function actionOrders()
     {
-        $this->render('orders');
+        $limit = 10;
+        $page = ($_REQUEST['page'])?$_REQUEST['page']:1;
+        $offset = ($limit*($page-1));
+
+        $order = new Order();
+        $q = Yii::app()->db->createCommand();
+        $items = $q->select()->from($order->tableName())->where('count_buy<:count',array(':count'=>4))->order(array('date_create desc'))->limit($limit,$offset)->queryAll();
+        $q = Yii::app()->db->createCommand();
+        $count = $q->select('COUNT(*) as count')->from($order->tableName())->where('count_buy<:count',array(':count'=>4))->queryRow();
+        $pages = array('page'=>$page,'count'=>ceil($count['count']/$limit));
+        //print_r($pages);
+        $this->render('orders',array('items'=>$items,'pages_order'=>$pages));
     }
 
     /**
@@ -145,6 +166,19 @@ class UserController extends Controller
      */
     public function actionOrdersbuy()
     {
+        /*
+        $limit = 10;
+        $page = ($_REQUEST['page'])?$_REQUEST['page']:1;
+        $offset = ($limit*($page-1));
+
+        $order = new Order();
+        $q = Yii::app()->db->createCommand();
+        $items = $q->select()->from($order->tableName())->where('count_buy<:count',array(':count'=>4))->order(array('date_create desc'))->limit($limit,$offset)->queryAll();
+        $q = Yii::app()->db->createCommand();
+        $count = $q->select('COUNT(*) as count')->from($order->tableName())->where('count_buy<:count',array(':count'=>4))->queryRow();
+        $pages = array('page'=>$page,'count'=>ceil($count['count']/$limit));
+        */
+        //print_r($pages);
         $this->render('ordersbuy');
     }
 
