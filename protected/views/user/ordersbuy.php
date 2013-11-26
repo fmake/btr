@@ -15,19 +15,9 @@
 <!--.row-->
 <div class="row">
     <div class="large-3 columns box-shadow bg-nav">
-        <ul>
-            <li><a href="#">Редактировать заказ</a></li>
-            <li><a href="#">Сортировка заказов</a></li>
-            <li><a href="#">Управление системой</a></li>
-            <li><a href="#">Удаление пользователей</a></li>
-            <li><a href="#">Добавление заказа</a></li>
-            <li><a href="#">Посмотреть все заказы</a></li>
-            <li><a href="#">Информация о заказе</a></li>
-            <li><a href="#">Удаление пользователей</a></li>
-            <li><a href="#">Сортировка заказов</a></li>
-            <li><a href="#">Посмотреть все заказы</a></li>
-            <li><a href="#">Информация о заказе</a></li>
-        </ul>
+        <?
+        include '_menu.php';
+        ?>
     </div>
 
     <div class="large-8 columns box-shadow">
