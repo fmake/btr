@@ -147,15 +147,24 @@ class UserController extends Controller
      */
     public function actionOrders()
     {
+        //echo 'qq';
+        //print_r($_REQUEST);
+        if($_REQUEST['order_buy']){
+            $id_order = intval($_REQUEST['order_buy']);
+            Order::model()->buy($id_order);
+            //echo $_REQUEST['order_buy'];
+        }
         $limit = 10;
         $page = ($_REQUEST['page'])?$_REQUEST['page']:1;
         $offset = ($limit*($page-1));
 
         $order = new Order();
+        $relation_order = new RelationsUserOrder();
         $q = Yii::app()->db->createCommand();
-        $items = $q->select()->from($order->tableName())->where('count_buy<:count',array(':count'=>4))->order(array('date_create desc'))->limit($limit,$offset)->queryAll();
+        $items = $q->select("o.*")->from($order->tableName().' o')->leftJoin($relation_order->tableName().' r_o','o.id_order = r_o.id_order')->where('o.count_buy<:count AND ISNULL(r_o.id_user)',array(':count'=>4))->order(array('o.date_create desc'))->limit($limit,$offset)->queryAll();
+
         $q = Yii::app()->db->createCommand();
-        $count = $q->select('COUNT(*) as count')->from($order->tableName())->where('count_buy<:count',array(':count'=>4))->queryRow();
+        $count = $q->select('COUNT(*) as count')->from($order->tableName().' o')->leftJoin($relation_order->tableName().' r_o','o.id_order = r_o.id_order')->where('o.count_buy<:count AND ISNULL(r_o.id_user)',array(':count'=>4))->queryRow();
         $pages = array('page'=>$page,'count'=>ceil($count['count']/$limit));
         //print_r($pages);
         $this->render('orders',array('items'=>$items,'pages_order'=>$pages));
@@ -166,20 +175,23 @@ class UserController extends Controller
      */
     public function actionOrdersbuy()
     {
-        /*
         $limit = 10;
         $page = ($_REQUEST['page'])?$_REQUEST['page']:1;
         $offset = ($limit*($page-1));
 
+        $user = new User();
+        $id_user = $user->getId(Yii::app()->user->id);
+
         $order = new Order();
+        $relation_order = new RelationsUserOrder();
         $q = Yii::app()->db->createCommand();
-        $items = $q->select()->from($order->tableName())->where('count_buy<:count',array(':count'=>4))->order(array('date_create desc'))->limit($limit,$offset)->queryAll();
+        $items = $q->select("o.*")->from($order->tableName().' o')->leftJoin($relation_order->tableName().' r_o','o.id_order = r_o.id_order')->where('o.count_buy<:count AND r_o.id_user = :id_user',array(':count'=>4,':id_user'=>$id_user))->order(array('o.date_create desc'))->limit($limit,$offset)->queryAll();
+
         $q = Yii::app()->db->createCommand();
-        $count = $q->select('COUNT(*) as count')->from($order->tableName())->where('count_buy<:count',array(':count'=>4))->queryRow();
+        $count = $q->select('COUNT(*) as count')->from($order->tableName().' o')->leftJoin($relation_order->tableName().' r_o','o.id_order = r_o.id_order')->where('o.count_buy<:count AND r_o.id_user = :id_user',array(':count'=>4,':id_user'=>$id_user))->queryRow();
         $pages = array('page'=>$page,'count'=>ceil($count['count']/$limit));
-        */
         //print_r($pages);
-        $this->render('ordersbuy');
+        $this->render('ordersbuy',array('items'=>$items,'pages_order'=>$pages));
     }
 
 	/**

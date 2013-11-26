@@ -142,4 +142,36 @@ class Order extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function getOrder($id,$fields = ""){
+        if($id){
+            $q = Yii::app()->db->createCommand();
+            $item = $q->select($fields)->from($this->tableName())->where("id_order = :id",array(':id'=>$id))->queryRow();
+            return $item;
+        }
+        return false;
+    }
+
+    public function buy($id)
+    {
+        $relation_order = new RelationsUserOrder();
+        $user = new User();
+        $order = new Order();
+        $id_user = $user->getId(Yii::app()->user->id);
+        //$transaction = Yii::app()->db->beginTransaction();
+
+        $relation_order->id_user = $id_user;
+        $relation_order->id_order = $id;
+        $relation_order->buy_date = time();
+        $relation_order->save();
+
+        $order_array = $order->getOrder($id,"count_buy");
+
+        $q = Yii::app()->db->createCommand();
+        $q->update($this->tableName(), array('count_buy'=>$order_array['count_buy']+1), 'id_order=:id', array(':id'=>$id));
+
+       // $transaction->rollBack();
+        //echo $id_user;
+        //return true;
+    }
 }

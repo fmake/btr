@@ -20,33 +20,34 @@
         ?>
     </div>
 
-    <div class="large-8 columns box-shadow">
-        <div class="row">
-            <div class="large-12 columns item">
-                <div class="datatime">01.02.2013</div>
-                <div class="h2">Заказ 1</div>
-                <p>Кандидат в президенты Грузии от правящей коалиции "Грузинская мечта" Георгий Маргвелашвили фактически побеждает на выборах в первом туре, набрав больше половины голосов граждан</p>
-                <div class="cart-price parent">
-                    <div class="phone right"><b>8 (909) 151-19-22</b></div>
-                    <div class="price left"><b>Ставок: 2</b></div>
+    <? if($items){?>
+        <div class="large-8 columns box-shadow">
+            <?foreach($items as $item){?>
+                <div class="row">
+                    <div class="large-12 columns item">
+                        <div class="datatime"><?=date('d.m.Y',$item['date_create'])?></div>
+                        <div class="h2">Заказ <?=$item['id_order']?></div>
+                        <p><?=$item['description']?></p>
+                        <div class="cart-price parent">
+                            <div class="phone right"><b><?=$item['phone']?></b></div>
+                            <div class="price left"><b>Ставок: <?=$item['count_buy']?></b></div>
+                        </div>
+                        <hr>
+                    </div>
                 </div>
-                <hr>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="large-12 columns item">
-                <div class="datatime">01.02.2013</div>
-                <div class="h2">Заказ 1</div>
-                <p>Кандидат в президенты Грузии от правящей коалиции "Грузинская мечта" Георгий Маргвелашвили фактически побеждает на выборах в первом туре, набрав больше половины голосов граждан</p>
-                <div class="cart-price parent">
-                    <div class="phone right"><b>8 (909) 151-19-22</b></div>
-                    <div class="price left"><b>Ставок: 2</b></div>
+            <?}?>
+            <? if($pages_order['count']>1){?>
+                <div class="pagination">
+                    <?for($page = 1;$page<=$pages_order['count'];$page++){?>
+                        <div class="page" style="float:left;padding-right: 5px;"><a href="?page=<?=$page?>"><?=$page?></a></div>
+                    <?}?>
                 </div>
-            </div>
+            <?}?>
         </div>
-
-
-    </div>
+    <?} else {?>
+        <div class="large-8 columns">
+            Нет ниодного заказа.
+        </div>
+    <?}?>
 </div>
 <!--/.row-->

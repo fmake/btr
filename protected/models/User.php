@@ -123,4 +123,14 @@ class User extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    public function getId($login = false)
+    {
+        if($login){
+            $q = Yii::app()->db->createCommand();
+            $item = $q->select("id_user")->from($this->tableName())->where("login = :login",array(':login'=>$login))->queryRow();
+            return $item["id_user"];
+        }
+        return false;
+    }
 }

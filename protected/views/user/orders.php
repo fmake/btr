@@ -30,7 +30,9 @@
                     <div class="h2">Заказ <?=$item['id_order']?></div>
                     <p><?=$item['description']?></p>
                     <div class="cart-price parent">
-                        <button class="right">Купить</button>
+                        <a href="?order_buy=<?=$item['id_order']?>">
+                            <button class="right">Купить</button>
+                        </a>
                         <div class="price left"><b>Цена: 15 рублей Ставок: <?=$item['count_buy']?></b></div>
                     </div>
                     <hr>
