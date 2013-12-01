@@ -133,4 +133,66 @@ class User extends CActiveRecord
         }
         return false;
     }
+
+    public function getName()
+    {
+        $login = Yii::app()->user->name;
+        if($login){
+            $q = Yii::app()->db->createCommand();
+            $item = $q->select("name")->from($this->tableName())->where("login = :login",array(':login'=>$login))->queryRow();
+            if($item["name"]) $result = $item["name"]."<br/>(".$login.")";
+            else $result = $login;
+            return $result;
+        }
+        return false;
+    }
+
+    public function getInfo()
+    {
+        $login = Yii::app()->user->name;
+        if($login){
+            $q = Yii::app()->db->createCommand();
+            $item = $q->select("id_user,name,login,date_create,balance,id_company")->from($this->tableName())->where("login = :login",array(':login'=>$login))->queryRow();
+           // if($item["name"]) $result = $item["name"]."<br/>(".$login.")";
+            //else $result = $login;
+            return $item;
+        }
+        return false;
+    }
+
+    public function getBalans($id = false)
+    {
+        $info = $this->getInfo();
+        if($info) return $info['balance'];
+        return false;
+    }
+
+    public function updateBalanse($price,$id_operation = 1)
+    {
+        /*
+         * id_operation :
+         * 1 - пополнение баланса
+         * 2 - покупка
+         */
+        $id_user = $this->getId(Yii::app()->user->id);
+        if($id_user){
+            $balanse_old = $this->getBalans();
+            $balanse_new = $balanse_old+($price);
+
+            $balanse_acc = new BalanceAccounting();
+            $date_create = time();
+            $balanse_acc->id_user = $id_user;
+            $balanse_acc->id_operation = $id_operation;
+            $balanse_acc->balance_old = $balanse_old;
+            $balanse_acc->balance_new = $balanse_new;
+            $balanse_acc->date_create = $date_create;
+            $balanse_acc->save();
+
+            $q = Yii::app()->db->createCommand();
+            $q->update($this->tableName(), array('balance'=>$balanse_new), 'id_user=:id', array(':id'=>$id_user));
+            return true;
+        }
+        return false;
+    }
+
 }

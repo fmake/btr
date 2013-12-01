@@ -136,9 +136,42 @@ class UserController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('User');
+        $dataProvider=new CActiveDataProvider('User');
+        $user = new User;
+        $id_user = $user->getId(Yii::app()->user->id);
+        $action = $_REQUEST['action_user'];
+        switch($action){
+            case 'password_change':
+
+                if($id_user){
+                    if($_REQUEST['password'] && $_REQUEST['password'] == $_REQUEST['password_repeat'] ){
+                        $password = md5($_REQUEST['password']);
+                        $q = Yii::app()->db->createCommand();
+                        $q->update($user->tableName(), array('password'=>$password), 'id_user=:id', array(':id'=>$id_user));
+                        Yii::app()->user->setFlash('user_password_change_message','Вы сменили пароль.');
+                    }else{
+                        Yii::app()->user->setFlash('user_password_change_message','Вы неверно повторили пароль.');
+                    }
+                }
+                break;
+            case 'add_balanse':
+                $add_price = $_REQUEST['price'];
+                $add_price = intval($add_price);
+                if($add_price > 0){
+                    $user->updateBalanse($add_price);
+
+                    Yii::app()->user->setFlash('user_add_balanse_message','Вы пополнили баланс на сумму '.$add_price.' руб. ');
+                }else{
+                    Yii::app()->user->setFlash('user_add_balanse_message','Пополняемая сумма должна быть больше 0');
+                }
+                break;
+            default:
+                break;
+        }
+
+        $userInfo = $user->getInfo();
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'dataProvider'=>$dataProvider,'userInfo'=>$userInfo
 		));
 	}
 
@@ -149,8 +182,11 @@ class UserController extends Controller
     {
         //echo 'qq';
         //print_r($_REQUEST);
+
         if($_REQUEST['order_buy']){
+            $user = new User;
             $id_order = intval($_REQUEST['order_buy']);
+            $user->updateBalanse(-15,2);
             Order::model()->buy($id_order);
             //echo $_REQUEST['order_buy'];
         }

@@ -29,9 +29,23 @@
     <div class="top-header">
         <div class="row">
             <div class="large-12">
-                <div class="group-link">
-                    <a href="javascript:void(0)">Как работает этот сайт ? </a>
-                    <a href="javascript:void(0)">Войти в систему</a>
+                <div class="large-4 column">
+                    <div class="group-link">
+                        <a href="javascript:void(0)">Как работает этот сайт ? </a>
+                        <?if(Yii::app()->user->isGuest){?>
+                            <a href="/index.php/site/login">Войти в систему </a>
+                        <?}?>
+                    </div>
+                </div>
+                <div class="large-8 columns status-user">
+                    <?if(!Yii::app()->user->isGuest){
+                        $User = new User();
+                        ?>
+                        <div class="large-1 column user-name"><a href="/index.php/site/logout">Выйти</a></div>
+                        <div class="large-6 column user-name"><a href="/index.php/user"><?=$User->getName()?></a></div>
+                        <div class="large-2 column balance"><span><?=$User->getBalans()?> руб.</span></div>
+                        <div class="large-3 column fill_up_balance"><button onclick="window.location = '/index.php/user';return false;">Пополнить баланс</button></div>
+                    <?}?>
                 </div>
             </div>
         </div>
@@ -40,10 +54,10 @@
     <!--.bottom-header-->
     <div class="bottom-header">
         <div class="row">
-            <div class="large-5 columns">
+            <div class="large-3 columns">
                 <a href="javascript:void(0)" class="logo">btr</a>
             </div>
-            <div class="large-7 columns">
+            <div class="large-9 columns">
                 <nav class="top-bar">
                     <ul class="title-area">
                         <li class="name"></li>
@@ -56,9 +70,9 @@
                                 array('label'=>'Рейтинг компаний', 'url'=>array('/site/rating')),
                                 array('label'=>'О компании', 'url'=>array('/site/page', 'view'=>'about')),
                                 array('label'=>'Контакты', 'url'=>array('/site/contact')),
-                                array('label'=>'Вход', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+                                //array('label'=>'Вход', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
                                 array('label'=>'Регистрация', 'url'=>array('/site/registration'), 'visible'=>Yii::app()->user->isGuest),
-                                array('label'=>'Выйти ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+                                //array('label'=>'Выйти ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
                             ),
                             'htmlOptions'=>array('class'=>'title-area'),
                         )); ?>

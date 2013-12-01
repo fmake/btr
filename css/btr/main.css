@@ -1,7 +1,6 @@
 /*
  * Copyright 2013
  * Created by: Future-group.ru
- * Developer: Alexey Sapigora (alexeysapigora@gmail.com)
  */
  /* ----------------------------------------------------------------------------------------------------------
 01 typography -----------------------------------------------------------------------------------------------
@@ -110,8 +109,8 @@ body {
 
 .top-header {
   background-color: #e9e9e9;
-  height: 39px;
   border-bottom: 1px solid #c6c6c6;
+  min-height: 57px;
 }
 
 .group-link {
@@ -192,4 +191,49 @@ a.logo {
 
 .item {
   padding: 20px 20px 20px 20px;
+}
+
+.title-balance {
+  padding: 14px 0 14px 0;
+}
+
+.info-user {
+  padding-bottom: 21px;
+}
+
+.info-user p {
+  margin-bottom: 0;
+  color: black;
+}
+
+.but-save {
+  text-align: right;
+}
+
+.status-user {
+  font-size: 14px;
+  color: #666666;
+}
+
+.title-payment {
+  padding: 34px 0 18px 0;
+}
+
+.payment-rub {
+  height: 32px;
+  line-height: 32px;
+}
+
+.user-name,
+.balance {
+  margin-top: 19px;
+}
+
+.balance span {
+  font-weight: bold;
+}
+
+.fill_up_balance button {
+  font-size: 12px;
+  margin: 4px 0 4px 0;
 }
